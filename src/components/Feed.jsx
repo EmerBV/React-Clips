@@ -10,9 +10,9 @@ const Feed = () => {
 
   useEffect(() => {
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-    .then((data) => setVideos(data.items))
+      .then((data) => setVideos(data.items))
   }, [selectedCategory])
-  
+
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box sx={{ height: { sx: 'auto', md: '92vh' }, borderRight: '1px solid #d2d2d7', px: { sx: 0, md: 2 } }}>
@@ -27,10 +27,13 @@ const Feed = () => {
 
       <Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
         <Typography variant='h4' fontWeight='bold' mb={2} sx={{ color: '#6e6e73' }}>
-          {selectedCategory} <span style={{ color: '#1d1d1f' }}>Videos</span>
+          {selectedCategory} <span style={{ color: '#1d1d1f' }}>videos</span>
         </Typography>
 
-        <Videos videos={videos} />
+        <Box display="flex" p={2}>
+          <Box sx={{ mr: { sm: '100px' } }} />
+          <Videos videos={videos} />
+        </Box>
       </Box>
     </Stack>
   )
