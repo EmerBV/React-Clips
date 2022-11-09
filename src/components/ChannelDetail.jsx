@@ -2,40 +2,41 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Box } from '@mui/material'
 
-import { Videos, ChannelCard } from './index.js'
+import { Videos, ChannelCard, Loader } from './index.js'
 import { fetchFromAPI } from '../utils/fetchFromAPI.js'
 
 const ChannelDetail = () => {
   const [channelDetail, setChannelDetail] = useState()
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState(null)
+
   const { id } = useParams()
 
- 
-
+  // ANTES:
   /* useEffect(() => {
-    const fetchResults = async () => {
-      const data = await fetchFromAPI(`channels?part=snippet%2Cstatistics&id=${id}`);
-
-      setChannelDetail(data.items[0]);
-
-      const videosData = await fetchFromAPI(`search?channelId=${id}&part=snippet%2Cid&order=date`);
-
-      setVideos(videosData.items);
-    };
-
-    fetchResults();
-  }, [id]); */
-
-  useEffect(() => {
     fetchFromAPI(`channels?part=snippet&id=${id}`)
     .then((data) => setChannelDetail(data?.items[0]))
 
     fetchFromAPI(`search?channelId=${id}&part=snippet%2Cid&order=date`)
     .then((data) => setVideos(data?.items))
-  }, [id])
+  }, [id]) */
+
+  // DESPUÉS:
+  useEffect(() => {
+    const fetchResults = async () => {
+      const data = await fetchFromAPI(`channels?part=snippet&id=${id}`);
+      setChannelDetail(data?.items[0]);
+
+      const videosData = await fetchFromAPI(`search?channelId=${id}&part=snippet%2Cid&order=date`);
+      setVideos(videosData?.items);
+    };
+
+    fetchResults();
+  }, [id]);
+
+  if (!videos) <Loader />;
 
   return (
-    <Box minHeight="95vh">
+    <>
       <Box>
         <div
           style={{
@@ -50,7 +51,21 @@ const ChannelDetail = () => {
         <Box sx={{ mr: { sm: '100px' } }} />
         <Videos videos={videos} />
       </Box>
-    </Box>
+
+      {/* <Box>
+        <img
+          src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}
+          alt='channel-art'
+          style={{
+            height: '300px',
+            width: '100%',
+            borderRadius: '8px',
+          }}
+        />
+        <ChannelCard channelDetail={channelDetail} mt='-93px' />
+      </Box>
+      <Videos videos={videos} /> */}
+    </>
   )
 }
 

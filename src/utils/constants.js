@@ -20,7 +20,7 @@ export const logo = Logo;
 
 export const categories = [
     { name: 'New', icon: <HomeIcon />, },
-    { name: 'JS Mastery', icon: <CodeIcon />, },
+    { name: 'Be Challenger', icon: <SportsEsportsIcon />, },
     { name: 'Coding', icon: <CodeIcon />, },
     { name: 'ReactJS', icon: <CodeIcon />, },
     { name: 'NextJS', icon: <CodeIcon />, },
@@ -38,9 +38,9 @@ export const categories = [
     { name: 'Crypto', icon: <DeveloperModeIcon />, },
 ];
 
-export const demoThumbnailUrl = 'https://i.ibb.co/G2L2Gwp/API-Course.png';
-export const demoChannelUrl = '/channel/UCmXmlB4-HJytD7wek0Uo97A';
+export const demoThumbnailUrl = 'https://yt3.ggpht.com/MiO6RBC8AZ7FDBwPoJjvovn-bT-tUfyhTgs5lB7TULialqaY-iYNYZt0KknlcK0R6FGcVFiQ=w2276-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj';
+export const demoChannelUrl = '/channel/UCYPxiVcWVS9JY78Z9T4AijQ';
 export const demoVideoUrl = '/video/GDa8kZLNhJ4';
-export const demoChannelTitle = 'JavaScript Mastery';
-export const demoVideoTitle = 'Build and Deploy 5 JavaScript & React API Projects in 10 Hours - Full Course | RapidAPI';
+export const demoChannelTitle = 'Be Challenger';
+export const demoVideoTitle = 'Be Challenger Español';
 export const demoProfilePicture = 'http://dergipark.org.tr/assets/app/images/buddy_sample.png'
